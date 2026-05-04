@@ -1,0 +1,13 @@
+# Chặn mọi file .env ở bất kỳ đâu trong dự án
+.env
+.env.local
+
+# Chặn các thư mục rác của thư viện và môi trường ảo
+node_modules/
+__pycache__/
+venv/
+.vscode/
+
+# Chặn các file rác của hệ điều hành
+.DS_Store
+Thumbs.db
