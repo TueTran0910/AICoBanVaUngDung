@@ -5,12 +5,19 @@ import json
 import re
 import traceback
 import base64
+import os # Thêm thư viện hệ thống
+from dotenv import load_dotenv # Thêm thư viện nạp biến môi trường
+
+# 1. Nạp các biến từ file .env vào hệ thống
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-genai.configure(api_key="AIzaSyDfU-GE5QgNJt3BcvHH425R69kvc4PVGf4")
-# Đổi lại thành 1.5-flash để đảm bảo API chạy ổn định, không lỗi 404
+# 2. Lấy API Key từ file .env thay vì viết trực tiếp
+api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
+
 model = genai.GenerativeModel('gemini-2.5-flash') 
 
 @app.route('/process', methods=['POST'])
